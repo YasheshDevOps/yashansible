@@ -1,0 +1,24 @@
+-
+  name: copy file to target servers
+  hosts: all
+  tasks:
+    - name: copy file
+      copy:
+        src: ./inventory.txt
+        dest: /tmp
+-
+  name: execute date
+  hosts: all
+  tasks:
+      - name: date command
+        command: date
+-
+  name: new line to inventory file
+  hosts: all
+  vars:
+      myip1: 10.10.10.10
+  tasks:
+      - name: add new line
+        lineinfile:
+          path: /tmp/inventory.txt
+          line: "{{ myip }}"
